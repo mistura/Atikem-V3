@@ -403,7 +403,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                   <fieldset>
-                    <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject"
+                    <input name="title" type="text" class="form-control" id="title" placeholder="Subject"
                       required="">
                   </fieldset>
                 </div>
@@ -569,6 +569,23 @@
       }
     }
   </script>
+
+      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("CbJJBmw6N9_k-299P"); // Replace with your EmailJS public key
+  })();
+
+  document.getElementById("contact").addEventListener("submit", function(event){
+    event.preventDefault();
+    emailjs.sendForm("service_w1tlebj", "template_rrplken", this)
+      .then(() => {
+        alert("Message sent successfully!");
+      }, (error) => {
+        alert("Failed to send: " + JSON.stringify(error));
+      });
+  });
+</script>
 
   <script language="text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
