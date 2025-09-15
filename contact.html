@@ -327,6 +327,23 @@ ME14 5EG
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/accordions.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("CbJJBmw6N9_k-299P"); // Replace with your EmailJS public key
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event){
+    event.preventDefault();
+    emailjs.sendForm("service_w1tlebj", " template_rrplken", this)
+      .then(() => {
+        alert("Message sent successfully!");
+      }, (error) => {
+        alert("Failed to send: " + JSON.stringify(error));
+      });
+  });
+</script>
+
     <script language = "text/Javascript"> 
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
       function clearField(t){                   //declaring the array outside of the
