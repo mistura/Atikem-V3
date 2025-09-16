@@ -56,7 +56,8 @@
           <ul class="right-icons">
             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://www.instagram.com/atikemcareservices?igsh=MWE4bTAxem81aHl0OQ=="><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.instagram.com/atikemcareservices?igsh=MWE4bTAxem81aHl0OQ=="><i
+                  class="fa fa-instagram"></i></a></li>
             <li><a href="mailto:admin@atikemservices.co.uk"><i class="fa fa-envelope"></i></a></li>
 
           </ul>
@@ -403,8 +404,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                   <fieldset>
-                    <input name="title" type="text" class="form-control" id="title" placeholder="Subject"
-                      required="">
+                    <input name="title" type="text" class="form-control" id="title" placeholder="Subject" required="">
                   </fieldset>
                 </div>
                 <div class="col-lg-12">
@@ -415,7 +415,10 @@
                 </div>
                 <div class="col-lg-12">
                   <fieldset>
-                    <button type="submit" id="form-submit" class="border-button">Send Message</button>
+                    <button type="submit" id="submit" class="border-button">
+                      <span id="btn-text">Send Message</span>
+                      <span id="btn-loader" style="display:none;">Sending...</span>
+                    </button>
                   </fieldset>
                 </div>
               </div>
@@ -472,7 +475,8 @@
             <li><a rel="nofollow" href="https://fb.com/templatemo" target="_blank"><i class="fa fa-facebook"></i></a>
             </li>
             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://www.instagram.com/atikemcareservices?igsh=MWE4bTAxem81aHl0OQ=="><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.instagram.com/atikemcareservices?igsh=MWE4bTAxem81aHl0OQ=="><i
+                  class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
         <div class="col-md-3 footer-item">
@@ -570,22 +574,38 @@
     }
   </script>
 
-      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("CbJJBmw6N9_k-299P"); // Replace with your EmailJS public key
-  })();
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("CbJJBmw6N9_k-299P");
+    })();
 
-  document.getElementById("contact").addEventListener("submit", function(event){
-    event.preventDefault();
-    emailjs.sendForm("service_w1tlebj", "template_rrplken", this)
-      .then(() => {
-        alert("Message sent successfully!");
-      }, (error) => {
-        alert("Failed to send: " + JSON.stringify(error));
-      });
-  });
-</script>
+    const form = document.getElementById("contact");
+    const submitBtn = document.getElementById("submit");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending...";
+
+      emailjs.sendForm("service_w1tlebj", "template_rrplken", this)
+        .then(() => {
+          alert("Message sent successfully!");
+          // Reset button
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Send Message";
+          form.reset();
+        }, (error) => {
+          alert("Failed to send: " + JSON.stringify(error));
+          // Reset button
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Send Message";
+        });
+    });
+  </script>
+
 
   <script language="text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
