@@ -388,17 +388,23 @@ header .navbar {
 }
 
 .Modern-Slider .item-1 .img-fill {
-	background-image: url(../images/bs3.jpg);
+	background-image: url(../images//hospital\ image1.jpg);
 	opacity: 1;
 	animation: subtleZoom 8s ease-in-out infinite;
 }
 
 .Modern-Slider .item-2 .img-fill {
-	background-image: url(../images/bg-care.jpg);
+	background-image: url(../images/bs3.jpg);
+	opacity: 1;
 	animation: subtleZoom 8s ease-in-out infinite;
 }
 
 .Modern-Slider .item-3 .img-fill {
+	background-image: url(../images/bg-care.jpg);
+	animation: subtleZoom 8s ease-in-out infinite;
+}
+
+.Modern-Slider .item-4 .img-fill {
 	background-image: url(../images/slide_03.jpg);
 	animation: subtleZoom 8s ease-in-out infinite;
 }
